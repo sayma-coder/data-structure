@@ -1,0 +1,11 @@
+arr = list(map(int,input("Enter the array elements: ").split()))
+# Inserting an element
+num = int(input("Enter the number to insert: "))
+index = int(input(f"Enter the index between 0 to {len(arr)}: "))
+arr.insert(index, num)
+print("New array is: ",arr)
+
+# Deleting an element from the array
+num2 = int(input("Enter the element to remove: ")) 
+arr.remove(num2)
+print("Final array is: ",arr) 
