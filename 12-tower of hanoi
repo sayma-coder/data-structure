@@ -1,0 +1,12 @@
+def towerOfHanoi(n, src, helper, dest):
+    if n == 1:
+        print("Move disk",n,"from source",src,"to destination",dest)
+        return
+    towerOfHanoi(n-1, src, dest, helper)
+    print("Move disk",n,"from source",src,"to destination",dest)
+    towerOfHanoi(n-1, helper, src, dest)
+
+
+
+n = 4
+towerOfHanoi(n, "A", "B", "C")
