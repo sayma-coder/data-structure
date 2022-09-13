@@ -1,0 +1,59 @@
+def merge(arr, si, mid, ei):
+	#creating temp array
+    merged = [0]*(ei-si+1)
+    #creating index 
+    indx1 = si  #to track first array
+    indx2 = mid + 1   #to track second array
+    x = 0	 # to track merged array
+    
+    #sorting arrays and putting it in merged array
+    while indx1 <= mid and indx2 <= ei:
+        if arr[indx1] <= arr[indx2]:
+            merged[x] = arr[indx1]
+            indx1+=1
+            x+=1
+        else:
+            merged[x] = arr[indx2]
+            indx2 += 1
+            x+=1
+    #putting remaining elements in merged array
+    while indx1 <= mid:
+        merged[x] = arr[indx1]
+        indx1+=1
+        x+=1
+    while indx2 <= ei:
+        merged[x] = arr[indx2]
+        indx2+=1
+        x+=1
+        
+    #copying merged array to original array
+    j = si
+    for i in range(len(merged)):
+        arr[j] = merged[i]
+        j+=1
+
+def mergeSort(arr, l, h):
+	if l < h:
+
+		# Same as (l+r)//2, but avoids overflow for
+		mid = l+(h-l)//2
+
+		# Sort first and second halves
+		mergeSort(arr, l, mid)
+		mergeSort(arr, mid+1, h)
+		merge(arr, l, mid, h)
+
+
+# Driver code to test above
+arr = [12, 11, 13, 5, 6, 7]
+n = len(arr)
+print("Given array is")
+for i in range(n):
+	print("%d" % arr[i],end=" ")
+
+mergeSort(arr, 0, n-1)
+print("\n\nSorted array is")
+for i in range(n):
+	print("%d" % arr[i],end=" ")
+
+# This code is contributed by Mohit Kumra
